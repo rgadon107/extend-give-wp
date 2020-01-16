@@ -11,21 +11,38 @@
 
 namespace spiralWebDB\ExtendGiveWP;
 
+add_action( 'give_pre_form', __NAMESPACE__ . '\get_give_donation_form_id', 5 );
+/*
+ * Return the form ID for the rendered Give donation form.
+ *
+ * @since 1.0.0.
+ *
+ * @param   int  $form_id    The post ID for the donation form.
+ * @return  int  $form_id    The post ID.
+ */
+function get_give_donation_form_id( $form_id ) {
+	return (int) $form_id;
+}
+
 add_action( 'give_pre_form', __NAMESPACE__ . '\render_form_featured_image_and_caption' );
 /*
  * Render donation form featured image and caption.
  *
- * @since 1.0.0
- * @param int $_id  Post ID of the donation form.
- *
+ * @since 1.0.1
+ * @param int $form_id            Post ID of the donation form.
+ * @param string|array $size      Optional. Image size. Accepts any valid image size, or an array of width
+ *                                    and height values in pixels (in that order). Default 'thumbnail'.
  * @return void
  */
-function render_form_featured_image_and_caption( $_id = 1349 ) {
-	// Get the post object for the attachment via get_post().
-	$post    = get_post( 1411 );
-	$postID  = $post->ID;
+function render_form_featured_image_and_caption( $form_id, $size = 'large' ) {
+	$form_id = get_give_donation_form_id( $form_id );
 
-	require _get_plugin_dir() . '/src/views/donation-form-1349/featured-image-view.php';
+	// Get the featured-image ID to render the image and caption on the donation page.
+	$options       = get_option( 'extend-give-wp', [] );
+	$attachment_id = isset( $options['featured-image-id'] ) ? (int) $options['featured-image-id'] : 0;
+	$post          = get_post( $attachment_id );
+
+	require_once _get_plugin_dir() . '/src/views/donation-form/featured-image-view.php';
 }
 
 add_action( 'give_pre_form', __NAMESPACE__ . '\render_donation_levels_label', 20 );
@@ -34,13 +51,14 @@ add_action( 'give_pre_form', __NAMESPACE__ . '\render_donation_levels_label', 20
  *
  * @since 1.0.0
  *
- * @param int $_id  Post ID of the donation form.
+ * @param int $form_id  Post ID of the donation form.
  *
  * @return void
  */
-function render_donation_levels_label( $_id = 1349 ) {
+function render_donation_levels_label( $form_id ) {
+	$form_id = get_give_donation_form_id( $form_id );
 
-	require _get_plugin_dir() . '/src/views/donation-form-1349/donation-levels-label.php';
+	require _get_plugin_dir() . '/src/views/donation-form/donation-levels-label.php';
 }
 
 add_action( 'give_after_donation_levels', __NAMESPACE__ . '\callout_recurring_donation_option', 1 );
@@ -55,9 +73,10 @@ add_action( 'give_after_donation_levels', __NAMESPACE__ . '\callout_recurring_do
  *
  * @return void
  */
-function callout_recurring_donation_option( $form_id = 1349 ) {
+function callout_recurring_donation_option( $form_id ) {
+	$form_id = get_give_donation_form_id( $form_id );
 
-	require _get_plugin_dir() . '/src/views/donation-form-1349/callout-recurring-donation-option.php';
+	require _get_plugin_dir() . '/src/views/donation-form/callout-recurring-donation-option.php';
 }
 
 add_action( 'give_payment_mode_before_gateways', __NAMESPACE__ . '\render_payment_method_info_before_options' );
@@ -70,7 +89,7 @@ add_action( 'give_payment_mode_before_gateways', __NAMESPACE__ . '\render_paymen
  */
 function render_payment_method_info_before_options() {
 
-	require _get_plugin_dir() . '/src/views/donation-form-1349/payment-info.php';
+	require _get_plugin_dir() . '/src/views/donation-form/payment-info.php';
 }
 
 add_action( 'give_donation_form_before_submit', __NAMESPACE__ . '\render_newsletter_signup_callout' );
@@ -79,12 +98,12 @@ add_action( 'give_donation_form_before_submit', __NAMESPACE__ . '\render_newslet
  *
  * @since 1.0.0
  *
- * @param $int _id  The donation form ID.
+ * @param int $form_id  The donation form ID.
  *
  * @return void
  */
-function render_newsletter_signup_callout( $_id = 1349 ) {
+function render_newsletter_signup_callout( $form_id ) {
+	$form_id = get_give_donation_form_id( $form_id );
 
-	require _get_plugin_dir() . '/src/views/donation-form-1349/newsletter-callout.php';
+	require _get_plugin_dir() . '/src/views/donation-form/newsletter-callout.php';
 }
-
