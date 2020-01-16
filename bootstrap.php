@@ -20,14 +20,37 @@
 
 namespace spiralWebDB\ExtendGiveWP;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'Cheatin&#8217; uh?' );
-}
+defined( 'ABSPATH' ) || exit;
 
-define( 'EXTEND_GIVE_URL', plugin_dir_url( __FILE__ ) );
-
+/**
+ * Get the absolute path to the plugin's root directory.
+ *
+ * @since  1.0.0
+ *
+ * @return string Absolute path to the plugin's root directory.
+ * @ignore
+ * @access private
+ *
+ */
 function _get_plugin_dir() {
 	return __DIR__;
 }
 
-require_once _get_plugin_dir() . '/src/support/load-assets.php';
+/**
+ * Autoload the plugin's files.
+ *
+ * @since 1.0.0
+ * @return void
+ */
+function autoload_files() {
+	$files = [
+		'/src/admin/option-settings-admin.php',
+		'/src/support/load-assets.php',
+	];
+
+	foreach ( $files as $filename ) {
+		require _get_plugin_dir() . $filename;
+	}
+}
+
+autoload_files();
