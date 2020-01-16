@@ -3,7 +3,7 @@
 ## Purpose
 
 This plugin extends the <a href="givewp.com">GiveWP donation plugin</a> by (1) registering custom functions to it's hooks (actions and filters), and 
-(2) settings an option in the WordPress database to store and retrieve the donation form featured image post ID. 
+(2) creating and setting an option in the WordPress database to store and retrieve the donation form featured image post ID. 
 
 The plugin structure is modeled on the <a href="https://github.com/KnowTheCode/Sandbox-Workspace">`Sandbox-Workspace` plugin</a> 
 available from the <a href="https://github.com/KnowTheCode">KnowtheCode.io code repository on GitHub.com</a>.
