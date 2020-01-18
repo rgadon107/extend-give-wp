@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This plugin extends the <a href="givewp.com">GiveWP donation plugin</a> by: 
+This plugin extends the <a href="https://givewp.com">GiveWP donation plugin</a> by: 
 
 (1) registering custom functions to the GiveWP plugin's actions hooks, 
 
