@@ -4,9 +4,9 @@
 
 This plugin extends the <a href="https://givewp.com">GiveWP donation plugin</a> by: 
 
-(1) setting an option in the WordPress database to store and retrieve the featured image post ID displayed in the Give donation form,
+(1) setting an option in the WordPress database to store and retrieve the featured image post ID displayed in the Give donation form;
 
-(2) registering custom functions to the GiveWP plugin's actions hooks, and
+(2) registering custom functions to the GiveWP plugin to render additional labels, content blocks, and a captioned featured image; and 
 
 (3) registering `extend-give-wp` with the Custom module of the `central-hub` must-use plugin to flush the rewrite rules on plugin status change ( e.g. activation, deactivation, uninstall );
 
