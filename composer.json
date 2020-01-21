@@ -29,10 +29,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "spiralWebDB\\ExtendGiveWP\\": "src/"
-    },
-    "psr-4": {
-      "spiralWebDB\\ExtendGiveWP\\": "tests/"
+      "spiralWebDB\\ExtendGiveWP\\": [ "src/", "tests/" ]
     }
   },
   "minimum-stability": "dev",
