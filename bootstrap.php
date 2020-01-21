@@ -7,15 +7,17 @@
  * @license     GPL-2.0+
  *
  * @wordpress-plugin
- * Plugin Name: Extend GiveWP
- * Plugin URI:  https://github.com/rgadon107/cornerstone/plugins/extend-give-wp/
- * Description: Extends the GiveWP donation plugin by rendering added custom content to the donation form.
- * Version:     1.0.1
- * Author:      Robert A. Gadon
- * Author URI:  https://spiralwebdb.com
- * Text Domain: extend-give
- * License:     GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * Plugin Name:         Extend GiveWP
+ * Plugin URI:          https://github.com/rgadon107/cornerstone/plugins/extend-give-wp/
+ * Description:         Extends the GiveWP donation plugin by rendering added custom content to the donation form.
+ * Version:             1.0.2
+ * Requires at least:   5.3
+ * Requires PHP:        5.6
+ * Author:              Robert A. Gadon
+ * Author URI:          https://spiralwebdb.com
+ * Text Domain:         extend-give-wp
+ * License:             GPL-2.0+
+ * License URI:         http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
 namespace spiralWebDB\ExtendGiveWP;
