@@ -6,7 +6,7 @@
   "license": "GPL-2.0-or-later",
   "require": {
     "php": "^5.6 || ^7",
-    "squizlabs/php_codesniffer": "^3.3.1",
+    "squizlabs/php_codesniffer": "^3.3.1"
   },
   "require-dev": {
     "php": "^5.6 || ^7",
@@ -19,8 +19,22 @@
   "config": {
     "sort-order": true
   },
-  "autoload": {},
-  "autoload-dev": {},
+  "autoload": {
+    "psr-4": {
+      "spiralWebDB\\ExtendGiveWP\\": "src/"
+    },
+    "exclude-from-classmap": [
+      "/tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "spiralWebDB\\ExtendGiveWP\\": "src/"
+    },
+    "psr-4": {
+      "spiralWebDB\\ExtendGiveWP\\": "tests/"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
