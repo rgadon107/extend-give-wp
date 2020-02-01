@@ -34,7 +34,6 @@ defined( 'ABSPATH' ) || exit;
  * @return string Absolute path to the plugin's root directory.
  * @ignore
  * @access private
- *
  */
 function _get_plugin_dir() {
 	return __DIR__;

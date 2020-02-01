@@ -24,9 +24,14 @@
 	<config name="minimum_supported_wp_version" value="4.7"/>
 
 	<rule ref="WordPress-Docs"/>
-
-	<!-- Views do not have a file DocBlock header -->
+	<!-- Views do not need file header DocBlocks. -->
+	<rule ref="Squiz.Commenting.FileComment.SpacingAfterComment">
+		<exclude-pattern>*/views/*</exclude-pattern>
+	</rule>
 	<rule ref="Squiz.Commenting.FileComment.WrongStyle">
+		<exclude-pattern>*/views/*</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.Commenting.FileComment.MissingPackageTag">
 		<exclude-pattern>*/views/*</exclude-pattern>
 	</rule>
 
