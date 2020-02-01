@@ -1,5 +1,6 @@
 ## 1.0.2
 
+- Remove `/assets/` directory from plugin. 
 - Add `composer.json` and `composer.lock` files to install and run the <a href="https://packagist.org/packages/wp-coding-standards/wpcs">`wp-coding-standards/wpcs` 
 package</a> as a development dependency.
 - Add `/vendor` directory to store development dependencies installed by Composer. 
