@@ -20,16 +20,15 @@ Github.com.
 
 ## Install Dependencies with Composer, the PHP Package Manager
 
-A `composer.json` file is included in the plugin root directory. Composer manages file autoloading, command-line scripts, 
-and installs the WordPress coding standards as a development dependency. 
+A `composer.json` file is included in the plugin root directory. Composer adds several development dependencies to add the WordPress coding standards to this plugin.  
 
 To activate Composer: 
 
 1) From the Terminal command line, change directories to the `/plugins` directory in your WordPress install.
 
 2) <a href="https://github.com/rgadon107/extend-give-wp">Open the repository on Github.com</a> and either clone the 
-repository directly into the `/plugins` directory, or download it and use the WP plugin installer to upload and activate 
-the plugin.
+repository directly into the `/plugins` directory, or download the plugin as a `*.zip` archive, and upload and activate 
+the plugin with the WordPress plugin installer.
 
 3) From the Terminal command line, change directories to `extend-give-wp`.
 
