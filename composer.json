@@ -12,15 +12,15 @@
 	"source": "https://github.com/rgadon107/extend-give-wp"
   },
   "require-dev": {
-    "php": "^5.6 || ^7",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-    "phpcompatibility/php-compatibility": "^9.0",
-    "squizlabs/php_codesniffer": "^3.3.1",
-    "wp-coding-standards/wpcs": "^2.2"
+	"php": "^5.6 || ^7",
+	"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+	"phpcompatibility/php-compatibility": "^9.0",
+	"squizlabs/php_codesniffer": "^3.3.1",
+	"wp-coding-standards/wpcs": "^2.2"
   },
   "prefer-stable": true,
   "scripts": {
-    "install-codestandards": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
+	"install-codestandards": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
 	"phpcs": "phpcs --basepath=.",
 	"phpcs:fix": "phpcbf"
   }
