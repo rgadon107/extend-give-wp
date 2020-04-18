@@ -8,12 +8,12 @@
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP\Tests\PHP;
+namespace spiralWebDb\ExtendGiveWP\Tests\PHP;
 
 /**
  * Test_Case_Trait
  *
- * @package spiralWebDB\ExtendGiveWP\Tests\Unit
+ * @package spiralWebDb\ExtendGiveWP\Tests\Unit
  */
 trait Test_Case_Trait {
 

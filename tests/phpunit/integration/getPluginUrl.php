@@ -2,15 +2,15 @@
 /**
  * Tests _get_plugin_url().
  *
- * @package     spiralWebDB\ExtendGiveWP\Tests\PHP\Integration
+ * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP\Tests\PHP\Integration;
+namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
 
-use function spiralWebDB\ExtendGiveWP\_get_plugin_url;
+use function spiralWebDb\ExtendGiveWP\_get_plugin_url;
 
 /**
  * Class Tests_GetPluginUrl

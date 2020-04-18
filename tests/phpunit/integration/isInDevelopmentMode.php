@@ -2,16 +2,16 @@
 /**
  * Tests _is_in_development_mode().
  *
- * @package     spiralWebDB\ExtendGiveWP\Tests\PHP\Integration
+ * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP\Tests\PHP\Integration;
+namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
 
-use function spiralWebDB\ExtendGiveWP\_is_in_development_mode;
-use function spiralWebDB\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
+use function spiralWebDb\ExtendGiveWP\_is_in_development_mode;
+use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
 
 /**
  * Class Tests_IsInDevelopmentMode

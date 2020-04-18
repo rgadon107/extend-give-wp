@@ -4,13 +4,13 @@
  *
  * NOTE: Delete this file once there is at least one integration test.
  *
- * @package     spiralWebDB\ExtendGiveWP\Tests\PHP\Unit
+ * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
 
 /**
  * Class Tests_SampleTest

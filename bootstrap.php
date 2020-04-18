@@ -2,7 +2,7 @@
 /**
  * Extend GiveWP
  *
- * @package     spiralWebDB\ExtendGiveWP
+ * @package     spiralWebDb\ExtendGiveWP
  * @author      Robert A. Gadon
  * @license     GPL-2.0+
  *
@@ -20,7 +20,7 @@
  * License URI:         http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-namespace spiralWebDB\ExtendGiveWP;
+namespace spiralWebDb\ExtendGiveWP;
 
 use spiralWebDb\Module\Custom;
 

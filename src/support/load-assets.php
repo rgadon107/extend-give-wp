@@ -4,12 +4,12 @@
  *
  * @since       1.0.0
  * @author      Robert A. Gadon
- * @package     spiralWebDB\ExtendGiveWP
+ * @package     spiralWebDb\ExtendGiveWP
  * @link        https://spiralwebdb.com
  * @license     GNU General Public License 2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP;
+namespace spiralWebDb\ExtendGiveWP;
 
 add_action( 'give_pre_form', __NAMESPACE__ . '\get_give_donation_form_id', 5 );
 /**
