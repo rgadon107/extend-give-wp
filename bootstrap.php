@@ -2,7 +2,7 @@
 /**
  * Extend GiveWP
  *
- * @package     spiralWebDB\ExtendGiveWP
+ * @package     spiralWebDb\ExtendGiveWP
  * @author      Robert A. Gadon
  * @license     GPL-2.0+
  *
@@ -20,9 +20,7 @@
  * License URI:         http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-namespace spiralWebDB\ExtendGiveWP;
-
-use spiralWebDb\Module\Custom;
+namespace spiralWebDb\ExtendGiveWP;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -37,6 +35,52 @@ defined( 'ABSPATH' ) || exit;
  */
 function _get_plugin_dir() {
 	return __DIR__;
+}
+
+/**
+ * Gets this plugin's URL.
+ *
+ * @since  1.0.0
+ * @ignore
+ * @access private
+ *
+ * @return string
+ */
+function _get_plugin_url() {
+	static $plugin_url;
+
+	if ( empty( $plugin_url ) ) {
+		$plugin_url = plugins_url( null, __FILE__ );
+	}
+
+	return $plugin_url;
+}
+
+/**
+ * Checks if this plugin is in development mode.
+ *
+ * @since  1.0.0
+ * @ignore
+ * @access private
+ *
+ * @return bool
+ */
+function _is_in_development_mode() {
+	return defined( WP_DEBUG ) && WP_DEBUG === true;
+}
+
+/*
+ *  Registers the plugin with WordPress activation, deactivation, and uninstall hooks.
+ *
+ *  @since 1.0.0
+ *
+ *  @return void
+ */
+function register_plugin() {
+
+	register_activation_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
+	register_deactivation_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
+	register_uninstall_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
 }
 
 /**
@@ -66,7 +110,7 @@ function autoload_files() {
 function launch() {
 	autoload_files();
 
-	Custom\register_plugin( __FILE__ );
+	register_plugin();
 }
 
 launch();

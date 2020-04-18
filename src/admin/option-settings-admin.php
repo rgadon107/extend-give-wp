@@ -4,14 +4,14 @@
  *
  * @since       1.0.0
  * @author      Robert A. Gadon
- * @package     spiralWebDB\ExtendGiveWP
+ * @package     spiralWebDb\ExtendGiveWP
  * @link        https://spiralwebdb.com
  * @license     GNU General Public License 2.0+
  */
 
-namespace spiralWebDB\ExtendGiveWP\Admin;
+namespace spiralWebDb\ExtendGiveWP\Admin;
 
-use function spiralWebDB\ExtendGiveWP\_get_plugin_dir;
+use function spiralWebDb\ExtendGiveWP\_get_plugin_dir;
 
 add_action( 'admin_menu', __NAMESPACE__ . '\add_option_settings_page' );
 /**
