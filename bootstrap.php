@@ -37,6 +37,38 @@ function _get_plugin_dir() {
 	return __DIR__;
 }
 
+/**
+ * Gets this plugin's URL.
+ *
+ * @since  1.0.0
+ * @ignore
+ * @access private
+ *
+ * @return string
+ */
+function _get_plugin_url() {
+	static $plugin_url;
+
+	if ( empty( $plugin_url ) ) {
+		$plugin_url = plugins_url( null, __FILE__ );
+	}
+
+	return $plugin_url;
+}
+
+/**
+ * Checks if this plugin is in development mode.
+ *
+ * @since  1.0.0
+ * @ignore
+ * @access private
+ *
+ * @return bool
+ */
+function _is_in_development_mode() {
+	return defined( WP_DEBUG ) && WP_DEBUG === true;
+}
+
 /*
  *  Registers the plugin with WordPress activation, deactivation, and uninstall hooks.
  *
