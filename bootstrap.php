@@ -22,8 +22,6 @@
 
 namespace spiralWebDb\ExtendGiveWP;
 
-use spiralWebDb\Module\Custom;
-
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -37,6 +35,20 @@ defined( 'ABSPATH' ) || exit;
  */
 function _get_plugin_dir() {
 	return __DIR__;
+}
+
+/*
+ *  Registers the plugin with WordPress activation, deactivation, and uninstall hooks.
+ *
+ *  @since 1.0.0
+ *
+ *  @return void
+ */
+function register_plugin() {
+
+	register_activation_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
+	register_deactivation_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
+	register_uninstall_hook( __FILE__, __NAMESPACE__ . '\delete_rewrite_rules' );
 }
 
 /**
@@ -66,7 +78,7 @@ function autoload_files() {
 function launch() {
 	autoload_files();
 
-	Custom\register_plugin( __FILE__ );
+	register_plugin();
 }
 
 launch();
