@@ -10,7 +10,7 @@
 
 namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
 
-use function spiralWebDb\ExtendGiveWP\_get_plugin_directory;
+use function spiralWebDb\ExtendGiveWP\_get_plugin_dir;
 use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
 
 /**
@@ -24,7 +24,7 @@ class Tests_GetPluginDirectory extends Test_Case {
 	 * Test _get_plugin_directory() should return the plugin's root directory.
 	 */
 	public function test__get_plugin_directory_should_run_plugin_directory() {
-		$this->assertStringEndsWith( 'starter-plugin', _get_plugin_directory() );
-		$this->assertSame( rtrim( get_plugin_root_dir(), DIRECTORY_SEPARATOR ), _get_plugin_directory() );
+		$this->assertStringEndsWith( 'extend-give-wp', _get_plugin_dir() );
+		$this->assertSame( rtrim( get_plugin_root_dir(), DIRECTORY_SEPARATOR ), _get_plugin_dir() );
 	}
 }
