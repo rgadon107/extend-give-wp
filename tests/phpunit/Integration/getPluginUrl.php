@@ -23,6 +23,6 @@ class Tests_GetPluginUrl extends TestCase {
 	 * Test _get_plugin_url() should return the plugin's URL.
 	 */
 	public function test__get_plugin_url_should_run_plugin_url() {
-		$this->assertStringEndsWith( 'plugins/extend-give-wp', _get_plugin_url() );
+		$this->assertStringEndsWith( 'extend-give-wp', _get_plugin_url() );
 	}
 }
