@@ -1,47 +1,52 @@
 language: php
 sudo: false
 dist: trusty
-
 cache:
   directories:
-    - node_modules
     - vendor
     - $HOME/.composer/cache
-
-env:
-  global:
-    - WP_VERSION=latest WP_MULTISITE=0
-    - WP_TRAVISCI="travis:phpunit"
-
 matrix:
+  fast_finish: true
   include:
-    - php: 5.6
-    - php: 7.2
+    - php: 7.4
+      env: WP_VERSION=latest
     - php: 7.3
+      env: WP_VERSION=latest
+    - php: 7.2
+      env: WP_VERSION=latest
+    - php: 5.6
+      env: WP_VERSION=latest
+    - name: Legacy
+      php: 5.6
+      env: WP_VERSION=4.9.11
+    - name: Coding Standards
+      php: 7.3
+      env: WP_TRAVISCI=phpcs
 
 before_install:
-  - travis_retry composer self-update
+  # Unless we need XDebug, disable it for improved performance.
+  - phpenv config-rm xdebug.ini || return 0
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  # Delete composer.lock if it exists.
+  - |
+    if [[ -f composer.lock ]] ; then
+      rm composer.lock
+    fi
 
 install:
-  - composer install --prefer-source --no-interaction
-  - composer global require "phpunit/phpunit=^5"
-
+  - composer install --prefer-dist --no-interaction
 before_script:
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - |
-    if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
-      phpenv config-rm xdebug.ini
-    else
-      echo "xdebug.ini does not exist"
-    fi
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
       bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-      composer global require "phpunit/phpunit=^5"
     fi
-
 script:
-  - composer run-tests
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]]; then
+      composer phpcs
+    else
+      composer run-tests
+    fi
 
 notifications:
   on_success: never
