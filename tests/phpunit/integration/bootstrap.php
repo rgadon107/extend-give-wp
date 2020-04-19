@@ -83,8 +83,8 @@ function load_dependencies() {
 
 	startup_wp_test_suite();
 
-	require_once dirname( __DIR__ ) . '/test-case-trait.php';
-	require_once get_test_root_dir() . '/class-test-case.php';
+	require_once dirname( __DIR__ ) . '/TestCaseTrait.php';
+	require_once get_test_root_dir() . '/TestCase.php';
 
 	// Load the plugin.
 	require get_plugin_root_dir() . 'bootstrap.php';

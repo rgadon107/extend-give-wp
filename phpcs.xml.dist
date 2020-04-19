@@ -45,4 +45,12 @@
 
 	<!-- Enforce short array syntax: `[]` in place of `array()`. -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+
+	<!-- Exclude tests from these rules. -->
+	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
 </ruleset>

@@ -18,7 +18,7 @@ use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
  *
  * @package spiralWebDb\StarterPlugin\Tests\PHP\Integration
  */
-class Tests_IsInDevelopmentMode extends Test_Case {
+class Tests_IsInDevelopmentMode extends TestCase {
 
 	/**
 	 * Test _is_in_development_mode() should return false when not in development mode.

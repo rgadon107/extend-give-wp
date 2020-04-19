@@ -17,7 +17,7 @@ use function spiralWebDb\ExtendGiveWP\_get_plugin_url;
  *
  * @package spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
  */
-class Tests_GetPluginUrl extends Test_Case {
+class Tests_GetPluginUrl extends TestCase {
 
 	/**
 	 * Test _get_plugin_url() should return the plugin's URL.

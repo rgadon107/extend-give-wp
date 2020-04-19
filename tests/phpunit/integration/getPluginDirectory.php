@@ -18,7 +18,7 @@ use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
  *
  * @package spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
  */
-class Tests_GetPluginDirectory extends Test_Case {
+class Tests_GetPluginDirectory extends TestCase {
 
 	/**
 	 * Test _get_plugin_directory() should return the plugin's root directory.

@@ -11,11 +11,11 @@
 namespace spiralWebDb\ExtendGiveWP\Tests\PHP;
 
 /**
- * Test_Case_Trait
+ * Shared tests functionality.
  *
  * @package spiralWebDb\ExtendGiveWP\Tests\Unit
  */
-trait Test_Case_Trait {
+trait TestCaseTrait {
 
 	/**
 	 * The path to test suite's root directory.

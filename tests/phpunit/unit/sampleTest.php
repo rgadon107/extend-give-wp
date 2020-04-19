@@ -17,7 +17,7 @@ namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
  *
  * @package spiralWebDb\StarterPlugin\Tests\PHP\Unit
  */
-class Tests_SampleTest extends Test_Case {
+class Tests_SampleTest extends TestCase {
 
 	/**
 	 * Test should provide a sample assertion.
