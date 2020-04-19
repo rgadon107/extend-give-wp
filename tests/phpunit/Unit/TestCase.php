@@ -3,21 +3,21 @@
  * Test Case for the Plugin's Unit Tests.
  *
  * @since       1.0.0
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
 use Brain\Monkey;
-use spiralWebDb\ExtendGiveWP\Tests\PHP\TestCaseTrait;
+use spiralWebDb\ExtendGiveWP\tests\phpunit\TestCaseTrait;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * Unit Tests' Test Case.
  *
- * @package spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
+ * @package spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  */
 abstract class TestCase extends BaseTestCase {
 	use TestCaseTrait;

@@ -2,13 +2,13 @@
 /**
  * Shared functionality for all test suites.
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit
  * @since       1.0.0
  * @link        https://github.com/spiralWebDb/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit;
 
 if ( version_compare( phpversion(), '5.6.0', '<' ) ) {
 	die( 'Whoops, PHP 5.6 or higher is required.' );

@@ -17,9 +17,7 @@
   },
   "autoload-dev": {
 	"psr-4": {
-	  "spiralWebDb\\ExtendGiveWP\\Tests\\PHP\\": "tests/phpunit/",
-	  "spiralWebDb\\ExtendGiveWP\\Tests\\PHP\\Unit\\": "tests/phpunit/unit/",
-	  "spiralWebDb\\ExtendGiveWP\\Tests\\PHP\\Integration\\": "tests/phpunit/integration/"
+	  "spiralWebDb\\ExtendGiveWP\\tests\\phpunit\\": "tests/phpunit/"
 	}
   },
   "require": {
@@ -51,8 +49,8 @@
 	  "@phpcs-src",
 	  "@phpcs-tests"
 	],
-	"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --configuration tests/phpunit/unit/phpunit.xml.dist --color=always",
-	"test-integration": "\"vendor/bin/phpunit\" --testsuite integration --configuration tests/phpunit/integration/phpunit.xml.dist --color=always",
+	"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --configuration tests/phpunit/Unit/phpunit.xml.dist --color=always",
+	"test-integration": "\"vendor/bin/phpunit\" --testsuite integration --configuration tests/phpunit/Integration/phpunit.xml.dist --color=always",
 	"run-tests": [
 	  "@test-unit",
 	  "@test-integration"

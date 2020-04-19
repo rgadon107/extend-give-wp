@@ -3,21 +3,21 @@
  * Test Case for the Plugin's PHP\Integration Tests.
  *
  * @since       1.0.0
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Integration
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Integration;
 
 use Brain\Monkey;
-use spiralWebDb\ExtendGiveWP\Tests\PHP\TestCaseTrait;
+use spiralWebDb\ExtendGiveWP\tests\phpunit\TestCaseTrait;
 use WP_UnitTestCase;
 
 /**
  * Integration Tests' Test Case.
  *
- * @package spiralWebDb\StarterPlugin\Tests\PHP\Integration
+ * @package spiralWebDb\StarterPlugin\tests\phpunit\Integration
  */
 abstract class TestCase extends WP_UnitTestCase {
 	use TestCaseTrait;

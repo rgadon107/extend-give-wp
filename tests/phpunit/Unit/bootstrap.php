@@ -3,17 +3,17 @@
  * Bootstraps the Plugin's Unit Tests.
  *
  * @since       1.0.0
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
-use function spiralWebDb\ExtendGiveWP\Tests\PHP\load_composer_autoloader;
+use function spiralWebDb\ExtendGiveWP\tests\phpunit\load_composer_autoloader;
 
 /**
- * Gets the unit test's root directory.
+ * Gets the Unit test's root directory.
  *
  * @since 1.0.0
  *

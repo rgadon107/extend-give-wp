@@ -2,21 +2,21 @@
 /**
  * Tests _is_in_development_mode().
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Integration
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Integration;
 
 use function spiralWebDb\ExtendGiveWP\_is_in_development_mode;
-use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
+use function spiralWebDb\ExtendGiveWP\tests\phpunit\get_plugin_root_dir;
 
 /**
  * Class Tests_IsInDevelopmentMode
  *
- * @package spiralWebDb\StarterPlugin\Tests\PHP\Integration
+ * @package spiralWebDb\StarterPlugin\tests\phpunit\Integration
  */
 class Tests_IsInDevelopmentMode extends TestCase {
 
