@@ -1,3 +1,13 @@
+## 1.0.3
+
+- Added `/tests/` folder in plugin root to add unit and WordPress integration tests with PHPUnit.
+- Added `phpunit.xml.dist` files for unit and integration tests. The unit test XML file was added to the plugin root directory, while the integration test XML file was added to `/tests/phpunit/integration/`.
+- Validated that the Composer scripts for `composer test-unit`, `composer test-integration`, and `composer run-tests` each work as intended.
+- Removed `.prettyci.composer.json` file for continuous integration with PHP Coding Standing. PrettyCI is no longer active and will discontinue in December 2020.
+- Added `.travis.yml` configuration file to run TravisCI on all pushed branches and pushed pull requests. 
+- Uptick plugin version number to 1.0.3 in plugin header docblock. 
+- Update plugin README.md file. 
+
 ## 1.0.2
 
 - Remove `/assets/` directory from plugin. 

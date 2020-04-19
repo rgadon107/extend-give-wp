@@ -10,7 +10,7 @@
  * Plugin Name:         Extend GiveWP
  * Plugin URI:          https://github.com/rgadon107/cornerstone/plugins/extend-give-wp/
  * Description:         Extends the GiveWP donation plugin by rendering added custom content to the donation form.
- * Version:             1.0.2
+ * Version:             1.0.3
  * Requires at least:   4.7
  * Requires PHP:        5.6
  * Author:              Robert A. Gadon
