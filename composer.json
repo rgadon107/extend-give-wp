@@ -21,26 +21,22 @@
 	}
   },
   "require": {
-	"php": "^5.6 || ^7"
+	"php": ">=5.6.0"
   },
   "require-dev": {
 	"php": "^5.6 || ^7",
-	"brain/monkey": "^2.2",
+	"brain/monkey": "^2.0",
 	"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+	"phpcompatibility/phpcompatibility-wp": "^2.0",
 	"phpunit/phpunit": "^5.7 || ^7",
 	"roave/security-advisories": "dev-master",
-	"sirbrillig/phpcs-variable-analysis": "^2.0",
-	"squizlabs/php_codesniffer": "^3.2",
-	"phpcompatibility/php-compatibility": "^9.0",
-	"wp-coding-standards/wpcs": "^2.2"
+	"wp-coding-standards/wpcs": "^2"
   },
   "config": {
 	"sort-order": true
   },
   "scripts": {
-	"install-codestandards": [
-	  "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
-	],
+	"install-codestandards": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
 	"phpcs": "phpcs --basepath=.",
 	"phpcs:fix": "phpcbf",
 	"phpcs-src": "\"vendor/bin/phpcs\" src/",
