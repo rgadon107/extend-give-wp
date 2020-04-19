@@ -2,20 +2,20 @@
 /**
  * Test Case Traits for the Plugin's test suites.
  *
- * @package     spiralWebDb\StarterPlugin\Tests\PHP
+ * @package     spiralWebDb\StarterPlugin\tests\phpunit
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit;
 
 /**
- * Test_Case_Trait
+ * Shared tests functionality.
  *
  * @package spiralWebDb\ExtendGiveWP\Tests\Unit
  */
-trait Test_Case_Trait {
+trait TestCaseTrait {
 
 	/**
 	 * The path to test suite's root directory.

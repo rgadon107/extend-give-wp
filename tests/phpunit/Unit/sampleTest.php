@@ -2,22 +2,22 @@
 /**
  * Sample Test to make sure everything is wired correctly.
  *
- * NOTE: Delete this file once there is at least one integration test.
+ * NOTE: Delete this file once there is at least one Integration test.
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
 /**
  * Class Tests_SampleTest
  *
- * @package spiralWebDb\StarterPlugin\Tests\PHP\Unit
+ * @package spiralWebDb\StarterPlugin\tests\phpunit\Unit
  */
-class Tests_SampleTest extends Test_Case {
+class Tests_SampleTest extends TestCase {
 
 	/**
 	 * Test should provide a sample assertion.
