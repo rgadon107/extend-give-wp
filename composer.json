@@ -51,7 +51,7 @@
 	  "@phpcs-src",
 	  "@phpcs-tests"
 	],
-	"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --color=always",
+	"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --configuration tests/phpunit/unit/phpunit.xml.dist --color=always",
 	"test-integration": "\"vendor/bin/phpunit\" --testsuite integration --configuration tests/phpunit/integration/phpunit.xml.dist --color=always",
 	"run-tests": [
 	  "@test-unit",
