@@ -2,18 +2,18 @@
 /**
  * Bootstraps the Plugin's Unit Tests.
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
  * @since       1.0.0
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
-use function spiralWebDb\ExtendGiveWP\Tests\PHP\load_composer_autoloader;
+use function spiralWebDb\ExtendGiveWP\tests\phpunit\load_composer_autoloader;
 
 /**
- * Gets the unit test's root directory.
+ * Gets the Unit test's root directory.
  *
  * @since 1.0.0
  *
@@ -27,15 +27,13 @@ function get_test_root_dir() {
  * Load the test suite's dependencies.
  *
  * @since 1.0.0
- *
- * @return void
  */
 function load_dependencies() {
 	require_once dirname( __DIR__ ) . '/functions.php';
 	load_composer_autoloader();
 
-	require_once dirname( __DIR__ ) . '/test-case-trait.php';
-	require_once get_test_root_dir() . '/class-test-case.php';
+	require_once dirname( __DIR__ ) . '/TestCaseTrait.php';
+	require_once get_test_root_dir() . '/TestCase.php';
 }
 
 load_dependencies();

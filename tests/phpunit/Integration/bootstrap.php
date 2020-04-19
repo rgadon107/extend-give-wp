@@ -2,19 +2,19 @@
 /**
  * Bootstraps the Plugin's Integration Tests.
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Integration
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Integration
  * @since       1.0.0
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Integration;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Integration;
 
-use function spiralWebDb\ExtendGiveWP\Tests\PHP\get_plugin_root_dir;
-use function spiralWebDb\ExtendGiveWP\Tests\PHP\load_composer_autoloader;
+use function spiralWebDb\ExtendGiveWP\tests\phpunit\get_plugin_root_dir;
+use function spiralWebDb\ExtendGiveWP\tests\phpunit\load_composer_autoloader;
 
 /**
- * Gets the integration test's root directory.
+ * Gets the Integration test's root directory.
  *
  * @since 1.0.0
  *
@@ -46,7 +46,7 @@ function get_wp_tests_dir() {
 
 	// Check it again. If it doesn't exist, stop here and post a message as to why we stopped.
 	if ( ! file_exists( $tests_dir . '/includes/' ) ) {
-		trigger_error( 'Unable to run the integration tests, because the WordPress test suite could not be located.', E_USER_ERROR ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Valid use case for our testing suite.
+		trigger_error( 'Unable to run the Integration tests, because the WordPress test suite could not be located.', E_USER_ERROR ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Valid use case for our testing suite.
 	}
 
 	// Strip off the trailing directory separator, if it exists.
@@ -83,8 +83,8 @@ function load_dependencies() {
 
 	startup_wp_test_suite();
 
-	require_once dirname( __DIR__ ) . '/test-case-trait.php';
-	require_once get_test_root_dir() . '/class-test-case.php';
+	require_once dirname( __DIR__ ) . '/TestCaseTrait.php';
+	require_once get_test_root_dir() . '/TestCase.php';
 
 	// Load the plugin.
 	require get_plugin_root_dir() . 'bootstrap.php';

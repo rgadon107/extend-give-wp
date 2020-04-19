@@ -2,26 +2,25 @@
 /**
  * Test Case for the Plugin's Unit Tests.
  *
- * @package     spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
  * @since       1.0.0
+ * @package     spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  * @link        https://github.com/rgadon107/starter-plugin
  * @license     GNU-2.0+
  */
 
-namespace spiralWebDb\ExtendGiveWP\Tests\PHP\Unit;
+namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
 use Brain\Monkey;
-use spiralWebDb\ExtendGiveWP\Tests\PHP\Test_Case_Trait;
-use PHPUnit\Framework\TestCase;
+use spiralWebDb\ExtendGiveWP\tests\phpunit\TestCaseTrait;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
- * Abstract Class Test_Case
+ * Unit Tests' Test Case.
  *
- * @package spiralWebDb\ExtendGiveWP\Tests\PHP\Unit
+ * @package spiralWebDb\ExtendGiveWP\tests\phpunit\Unit
  */
-abstract class Test_Case extends TestCase {
-
-	use Test_Case_Trait;
+abstract class TestCase extends BaseTestCase {
+	use TestCaseTrait;
 
 	/**
 	 * Prepares the test environment before each test.
@@ -45,23 +44,27 @@ abstract class Test_Case extends TestCase {
 	 */
 	protected function setup_common_wp_stubs() {
 		// Common escaping functions.
-		Monkey\Functions\stubs( array(
-			'esc_attr',
-			'esc_html',
-			'esc_textarea',
-			'esc_url',
-			'wp_kses_post',
-		) );
+		Monkey\Functions\stubs(
+			[
+				'esc_attr',
+				'esc_html',
+				'esc_textarea',
+				'esc_url',
+				'wp_kses_post',
+			]
+		);
 
 		// Common internationalization functions.
-		Monkey\Functions\stubs( array(
-			'__',
-			'esc_html__',
-			'esc_html_x',
-			'esc_attr_x',
-		) );
+		Monkey\Functions\stubs(
+			[
+				'__',
+				'esc_html__',
+				'esc_html_x',
+				'esc_attr_x',
+			]
+		);
 
-		foreach ( array( 'esc_attr_e', 'esc_html_e', '_e' ) as $wp_function ) {
+		foreach ( [ 'esc_attr_e', 'esc_html_e', '_e' ] as $wp_function ) {
 			Monkey\Functions\when( $wp_function )->echoArg();
 		}
 	}
