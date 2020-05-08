@@ -81,6 +81,15 @@ function register_plugin() {
 }
 
 /**
+ * Delete the rewrite rules on plugin status change, i.e. activation, deactivation, or uninstall.
+ *
+ * @since 1.0.0
+ */
+function delete_rewrite_rules() {
+	delete_option( 'rewrite_rules' );
+}
+
+/**
  * Autoload the plugin's files.
  *
  * @since 1.0.0
