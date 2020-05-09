@@ -15,6 +15,8 @@ use spiralWebDb\ExtendGiveWP\tests\phpunit\Integration\TestCase;
 use function spiralWebDb\ExtendGiveWP\get_give_donation_form_id;
 
 /**
+ * Class Tests_GetGiveDonationFormID
+ *
  * @covers ::\spiralWebDb\ExtendGiveWP\get_give_donation_form_id
  *
  * @group   extend-give-wp
@@ -22,6 +24,9 @@ use function spiralWebDb\ExtendGiveWP\get_give_donation_form_id;
  */
 class Tests_GetGiveDonationFormID extends TestCase {
 
+	/**
+	 *  Test should check callback registered to action hook has expected priority.
+	 */
 	public function test_callback_registered_to_action_hook_has_expected_priority() {
 		$this->assertEquals( 5, has_action( 'give_pre_form', 'spiralWebDb\ExtendGiveWP\get_give_donation_form_id' ) );
 	}
