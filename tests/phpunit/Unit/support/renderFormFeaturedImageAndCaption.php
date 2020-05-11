@@ -25,6 +25,9 @@ use function spiralWebDb\ExtendGiveWP\render_form_featured_image_and_caption;
  */
 class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 
+	/**
+	 * Prepares the test environment before each test.
+	 */
 	public function setUp() {
 		parent::setUp();
 
@@ -32,6 +35,8 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	}
 
 	/**
+	 * Test should render form featured image and caption given $form_id and image size.
+	 *
 	 * @dataProvider addTestData
 	 */
 	public function test_should_render_form_featured_image_and_caption( $post_data, $html, $expected_view ) {
@@ -60,13 +65,16 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		$this->assertSame( $expected_view, $actual_view );
 	}
 
+	/**
+	 *  Data provider for unit test method.
+	 */
 	public function addTestData() {
 		return [
 			'donation form featured image and caption' => [
 				'post_data'           => [
 					'form_id'       => 39,
 					'attachment_id' => 144,
-					'post_excerpt'  => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.'
+					'post_excerpt'  => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.',
 				],
 				'expected_html_image' => <<<HTML_IMAGE
 <img src="https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?fit=1024%2C819&&ssl=1" class="featured-image jetpack-lazy-image jetpack-lazy-image--handled" alt="tour members of the 2018 cornerstone chorale and brass" data-attachment-id="1411" data-permalink="https://cornerstonechorale.org/2018-cornerstone-tour-members-1024-x-819/" data-orig-file="https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?fit=1024%2C819&&ssl=1" data-orig-size="1024,819" data-comments-opened="0" data-image-meta=“{“aperture”:”0”,”credit”:””,”camera”:””,”caption”:””,”created_timestamp”:”0”,”copyright”:””,”focal_length”:”0”,”iso”:”0”,”shutter_speed”:”0”,”title”:””,”orientation”:”1”}” data-image-title="2018 Cornerstone Tour members | 1024 x 819" data-image-description="" data-medium-file="https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?fit=300%2C240&&ssl=1" data-large-file="https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?fit=1024%2C819&&ssl=1" srcset="https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?w=1024&&ssl=1 1024w, https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?resize=300%2C240&&ssl=1 300w, https://i2.wp.com/cornerstonechorale.org/wp-content/uploads/2019/11/2018-Cornerstone-Tour-members-1024-x-819.jpg?resize=768%2C614&&ssl=1 768w" data-lazy-loaded="1" sizes="(max-width: 1000px) 100vw, 1000px" width="1024" height="819">
@@ -79,7 +87,7 @@ HTML_IMAGE
 </figure>
 FEATURED_IMAGE_VIEW
 				,
-			]
+			],
 		];
 	}
 }
