@@ -11,6 +11,7 @@
 namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
 use Brain\Monkey;
+use Brain\Monkey\Functions;
 use spiralWebDb\ExtendGiveWP\tests\phpunit\TestCaseTrait;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
@@ -44,7 +45,7 @@ abstract class TestCase extends BaseTestCase {
 	 */
 	protected function setup_common_wp_stubs() {
 		// Common escaping functions.
-		Monkey\Functions\stubs(
+		Functions\stubs(
 			[
 				'esc_attr',
 				'esc_html',
@@ -55,7 +56,7 @@ abstract class TestCase extends BaseTestCase {
 		);
 
 		// Common internationalization functions.
-		Monkey\Functions\stubs(
+		Functions\stubs(
 			[
 				'__',
 				'esc_html__',
@@ -65,7 +66,7 @@ abstract class TestCase extends BaseTestCase {
 		);
 
 		foreach ( [ 'esc_attr_e', 'esc_html_e', '_e' ] as $wp_function ) {
-			Monkey\Functions\when( $wp_function )->echoArg();
+			Functions\when( $wp_function )->echoArg();
 		}
 	}
 }
