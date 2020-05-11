@@ -12,6 +12,8 @@ namespace spiralWebDb\ExtendGiveWP\tests\phpunit\Unit;
 
 use function spiralWebDb\ExtendGiveWP\tests\phpunit\load_composer_autoloader;
 
+define( 'EXTEND_GIVE_WP_ROOT_DIR', dirname( dirname( dirname( __DIR__ ) ) ) );
+
 /**
  * Gets the Unit test's root directory.
  *
