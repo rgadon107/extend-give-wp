@@ -22,6 +22,8 @@ use function spiralWebDb\ExtendGiveWP\render_form_featured_image_and_caption;
  *
  * @group   extend-give-wp
  * @group   support
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamTag
  */
 class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 
