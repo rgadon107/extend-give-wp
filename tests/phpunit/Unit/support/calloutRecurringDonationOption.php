@@ -13,7 +13,6 @@ namespace spiralWebDb\ExtendGiveWP\Tests\Unit;
 
 use Brain\Monkey\Functions;
 use spiralWebDb\ExtendGiveWP\tests\phpunit\Unit\TestCase;
-use function spiralWebDb\ExtendGiveWP\get_give_donation_form_id;
 use function spiralWebDb\ExtendGiveWP\callout_recurring_donation_option;
 
 /**
