@@ -50,10 +50,10 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 			->once()
 			->with( 'extend-give-wp', [] )
 			->andReturn( $post_data['attachment_id'] );
-		Functions\expect( 'get_post' )
+		Functions\expect( 'get_post_field' )
 			->once()
-			->with( $post_data['attachment_id'] )
-			->andReturn( 'WP_Post' );
+			->with( 'post_excerpt', $post_data['attachment_id'] )
+			->andReturn( $post_data['post_excerpt'] );
 		Functions\expect( 'wp_get_attachment_image' )
 			->once()
 			->with( $post_data['attachment_id'], 'large', false, [ 'class' => 'featured-image' ] )
