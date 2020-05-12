@@ -39,31 +39,42 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_return_the_donation_form_id_when_given_post_id( $option, $excerpt ) {
+	public function test_should_return_the_donation_form_id_when_given_post_id( $args, $starts_with, $ends_with ) {
 		$form_id       = $this->factory()->post->create();
 		$form_id       = get_give_donation_form_id( $form_id );
-		$options       = add_option( 'extend-give-wp', $option['featured-image-id'] );
-		$attachment_id = get_option( 'extend-give-wp' );
-		$post_excerpt  = get_post_field( $excerpt, $attachment_id );
+		$attachment_id = $this->factory()->attachment->create_object( $args );
+		$post_excerpt  = get_post_field( 'post_excerpt', $attachment_id );
+		wp_get_attachment_image( $attachment_id, 'large', $icon = false, $attr = [ 'class' => 'featured-image' ] );
 
 		ob_start();
-		echo wp_get_attachment_image( $attachment_id, $size = 'large', $icon = false, $attr = [ 'class' => 'featured-image' ] );
 		render_form_featured_image_and_caption( $form_id, 'large' );
 		$actual = ob_get_clean();
 
-//		$this->assertSame( $form_id, render_form_featured_image_and_caption( $form_id, $size = 'large' ) );
+		$this->assertStringStartsWith( $starts_with, $actual );
+		$this->assertStringEndsWith( $ends_with, $actual );
 	}
 
+	/**
+	 *  Data provider for integration test method.
+	 */
 	public function addTestData() {
 		return [
 			'render_donation_form ' => [
-				'option_data'  => [
-					'featured-image-id' => 144
+				'attachment_args'  => [
+					'post_title'   => '2018 Cornerstone Tour members | 1024 x 819',
+					'post_excerpt' => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.',
 				],
-				'post_excerpt' => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.'
-			]
+				'view_starts_with' => <<<FEATURED_IMAGE_VIEW_STARTS_WITH
+<figure id="donation-form-featured-image" class="donate-page-featured-image attachment-0" aria-describedby="donation-form-featured-image">
+FEATURED_IMAGE_VIEW_STARTS_WITH
+				,
+				'view_ends_with'   => <<<FEATURED_IMAGE_VIEW_ENDS_WITH
+	<figcaption id="donation-form-image-caption" class="featured-image-caption"><em>Members of the Cornerstone Chorale & Brass during their 2018 tour.</em></figcaption>
+</figure>
+FEATURED_IMAGE_VIEW_ENDS_WITH
+				,
+			],
 		];
 	}
 }
-
 
