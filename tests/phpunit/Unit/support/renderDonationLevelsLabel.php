@@ -42,10 +42,7 @@ class Tests_RenderDonationLevelsLabel extends TestCase {
 	 * @dataProvider addTestData
 	 */
 	public function test_should_render_donation_levels_label( $post_data, $expected ) {
-		Functions\expect( 'get_give_donation_form_id' )
-			->zeroOrMoreTimes()
-			->with( 'form_id' )
-			->andReturn( $post_data['form_id'] );
+		Functions\expect( 'get_give_donation_form_id' )->andReturn( $post_data['form_id'] );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
 
 		ob_start();
