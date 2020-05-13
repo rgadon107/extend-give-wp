@@ -103,7 +103,7 @@ add_action( 'give_donation_form_before_submit', __NAMESPACE__ . '\render_newslet
  * Render newsletter signup callout before donation total.
  *
  * @since 1.0.1
- *        
+ *
  * @param int $form_id The donation form ID.
  */
 function render_newsletter_signup_callout( $form_id ) {
