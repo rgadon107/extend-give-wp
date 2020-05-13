@@ -49,7 +49,7 @@ class Tests_CalloutRecurringDonationOption extends TestCase {
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
 
 		ob_start();
-		callout_recurring_donation_option( $form_id );
+		callout_recurring_donation_option( $post_data['form_id'] );
 		$actual = ob_get_clean();
 
 		$this->assertEquals( $expected, $actual );
