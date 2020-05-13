@@ -47,7 +47,7 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 			->with( 'form_id' )
 			->andReturn( $post_data['form_id'] );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
-		Functions\when( 'esc_attr' )->justEcho( $post_data['form_id'] );
+		Functions\when( 'esc_attr' )->justReturn( $post_data['form_id'] );
 
 		ob_start();
 		render_newsletter_signup_callout( $post_data['form_id'] );
