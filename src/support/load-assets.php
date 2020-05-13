@@ -29,7 +29,7 @@ add_action( 'give_pre_form', __NAMESPACE__ . '\render_form_featured_image_and_ca
 /**
  * Render donation form featured image and caption.
  *
- * @since 1.0.1
+ * @since 1.0.2
  *
  * @param int          $form_id Post ID of the donation form.
  * @param string|array $size    Optional. Image size. Accepts any valid image size, or an array of width
@@ -37,6 +37,10 @@ add_action( 'give_pre_form', __NAMESPACE__ . '\render_form_featured_image_and_ca
  */
 function render_form_featured_image_and_caption( $form_id, $size = 'large' ) {
 	$form_id = get_give_donation_form_id( $form_id );
+
+	if ( empty( $form_id ) ) {
+		return;
+	}
 
 	// Get the featured-image ID to render the image and caption on the donation page.
 	$options       = get_option( 'extend-give-wp', [] );
@@ -50,12 +54,16 @@ add_action( 'give_pre_form', __NAMESPACE__ . '\render_donation_levels_label', 20
 /**
  * Render donation levels label.
  *
- * @since 1.0.0
+ * @since 1.0.1
  *
  * @param int $form_id Post ID of the donation form.
  */
 function render_donation_levels_label( $form_id ) {
 	$form_id = get_give_donation_form_id( $form_id );
+
+	if ( empty( $form_id ) ) {
+		return;
+	}
 
 	require _get_plugin_dir() . '/src/views/donation-form/donation-levels-label.php';
 }
@@ -66,12 +74,16 @@ add_action( 'give_after_donation_levels', __NAMESPACE__ . '\callout_recurring_do
  *
  * Register callback to priority of 1 to render view before option checkbox.
  *
- * @since 1.0.0
+ * @since 1.0.1
  *
- * @param int $form_id  The form ID number.
+ * @param int $form_id The form ID number.
  */
 function callout_recurring_donation_option( $form_id ) {
 	$form_id = get_give_donation_form_id( $form_id );
+
+	if ( empty( $form_id ) ) {
+		return;
+	}
 
 	require _get_plugin_dir() . '/src/views/donation-form/callout-recurring-donation-option.php';
 }
@@ -90,12 +102,16 @@ add_action( 'give_donation_form_before_submit', __NAMESPACE__ . '\render_newslet
 /**
  * Render newsletter signup callout before donation total.
  *
- * @since 1.0.0
- *
- * @param int $form_id  The donation form ID.
+ * @since 1.0.1
+ *        
+ * @param int $form_id The donation form ID.
  */
 function render_newsletter_signup_callout( $form_id ) {
 	$form_id = get_give_donation_form_id( $form_id );
+
+	if ( empty( $form_id ) ) {
+		return;
+	}
 
 	require _get_plugin_dir() . '/src/views/donation-form/newsletter-callout.php';
 }
