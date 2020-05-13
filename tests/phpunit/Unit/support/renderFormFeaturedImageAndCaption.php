@@ -52,13 +52,14 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 			->andReturn( $post_data['attachment_id'] );
 		Functions\expect( 'get_post_field' )
 			->once()
-			->with( 'post_excerpt', $post_data['attachment_id'] )
+			->with( 'post_excerpt', 'attachment_id' )
 			->andReturn( $post_data['post_excerpt'] );
 		Functions\expect( 'wp_get_attachment_image' )
 			->once()
 			->with( $post_data['attachment_id'], 'large', false, [ 'class' => 'featured-image' ] )
 			->andReturn( $html );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
+		Functions\when( 'esc_attr')->justEcho();
 
 		ob_start();
 		render_form_featured_image_and_caption( $post_data['form_id'], 'large' );
