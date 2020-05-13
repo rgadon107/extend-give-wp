@@ -41,19 +41,19 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_recurring_donation_option_label( $post_data, $expected ) {
+	public function test_should_render_recurring_donation_option_label( $form_id, $expected_view ) {
 		Functions\expect( 'get_give_donation_form_id' )
 			->zeroOrMoreTimes()
 			->with( 'form_id' )
-			->andReturn( $post_data['form_id'] );
+			->andReturn( $form_id );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
-		Functions\when( 'esc_attr' )->justReturn( $post_data['form_id'] );
+		Functions\when( 'esc_attr' )->justReturn( $form_id );
 
 		ob_start();
-		render_newsletter_signup_callout( $post_data['form_id'] );
-		$actual = ob_get_clean();
+		render_newsletter_signup_callout( $form_id );
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
@@ -61,10 +61,12 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'newsletter callout view' => [
-				'post_data'     => [
-					'form_id' => 33,
-				],
+			'test data is empty' => [
+				'form_id'       => '',
+				'expected_view' => '',
+			],
+			'test data is valid' => [
+				'form_id'       => 33,
 				'expected_view' => <<<NEWSLETTER_CALLOUT_VIEW
 <h3 id="give-form-33-1" class="newsletter-callout">Cornerstone Newsletter</h3>
 
