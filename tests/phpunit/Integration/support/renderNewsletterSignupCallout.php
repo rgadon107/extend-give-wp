@@ -38,26 +38,32 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_recurring_donation_option_label( $expected ) {
-		$form_id = $this->factory()->post->create();
+	public function test_should_render_recurring_donation_option_label( $form_id, $expected_view ) {
 		$form_id = get_give_donation_form_id( $form_id );
 		$args    = [];
 
 		ob_start();
 		do_action( 'give_donation_form_before_submit', $form_id, $args );
-		$actual = ob_get_clean();
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
 	 *  Data provider for unit test method.
 	 */
 	public function addTestData() {
+		$form_id = $this->factory()->post->create();
+
 		return [
-			'payment info view' => [
+			'test data is empty' => [
+				'form_id'       => '',
+				'expected_view' => '',
+			],
+			'test data is valid' => [
+				'form_id'       => $form_id,
 				'expected_view' => <<<NEWSLETTER_CALLOUT_VIEW
-<h3 id="give-form-5-1" class="newsletter-callout">Cornerstone Newsletter</h3>
+<h3 id="give-form-4-1" class="newsletter-callout">Cornerstone Newsletter</h3>
 
 NEWSLETTER_CALLOUT_VIEW
 				,
