@@ -39,8 +39,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_return_the_donation_form_id_when_given_post_id( $args, $starts_with, $ends_with ) {
-		$form_id       = $this->factory()->post->create();
+	public function test_should_return_the_donation_form_id_when_given_post_id( $form_id, $args, $starts_with, $ends_with ) {
 		$form_id       = get_give_donation_form_id( $form_id );
 		$attachment_id = $this->factory()->attachment->create_object( $args );
 		$post_excerpt  = get_post_field( 'post_excerpt', $attachment_id );
@@ -58,10 +57,23 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 *  Data provider for integration test method.
 	 */
 	public function addTestData() {
+		$form_id = $this->factory()->post->create();
+
 		return [
-			'render_donation_form ' => [
+			'post data is empty'     => [
+				'form_id'          => 0,
 				'attachment_args'  => [
-					'post_title'   => '2018 Cornerstone Tour members | 1024 x 819',
+					'post_excerpt' => '',
+				],
+				'view_starts_with' => '',
+				'view_ends_with'   => '',
+			],
+			'post data is not empty' => [
+				'form_id'          => $form_id,
+				'options'          => [
+					'featured_image_id' => 144,
+				],
+				'attachment_args'  => [
 					'post_excerpt' => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.',
 				],
 				'view_starts_with' => <<<FEATURED_IMAGE_VIEW_STARTS_WITH
