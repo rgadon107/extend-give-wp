@@ -41,12 +41,12 @@ class Tests_RenderDonationLevelsLabel extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_donation_levels_label( $post_data, $expected ) {
-		Functions\expect( 'get_give_donation_form_id' )->andReturn( $post_data['form_id'] );
+	public function test_should_render_donation_levels_label( $form_id, $expected ) {
+		Functions\expect( 'get_give_donation_form_id' )->andReturn( $form_id );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
 
 		ob_start();
-		render_donation_levels_label( $post_data['form_id'] );
+		render_donation_levels_label( $form_id );
 		$actual = ob_get_clean();
 
 		$this->assertEquals( $expected, $actual );
@@ -57,10 +57,12 @@ class Tests_RenderDonationLevelsLabel extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'donation levels label' => [
-				'post_data'     => [
-					'form_id' => 42,
-				],
+			'donation levels label is empty' => [
+				'form_id'       => 0,
+				'expected_view' => '',
+			],
+			'donation levels label is valid' => [
+				'form_id'       => 42,
 				'expected_view' => <<<DONATION_LEVELS_LABEL_VIEW
 <div class="donation-levels-label-wrap">
 	<h3 class="donation-levels-label">Donation Amount</h3>
