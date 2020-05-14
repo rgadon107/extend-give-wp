@@ -41,18 +41,14 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_recurring_donation_option_label( $post_data, $expected ) {
-		Functions\expect( 'get_give_donation_form_id' )
-			->zeroOrMoreTimes()
-			->with( 'form_id' )
-			->andReturn( $post_data['form_id'] );
+	public function test_should_render_recurring_donation_option_label( $expected_view ) {
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
 
 		ob_start();
-		render_payment_method_info_before_options( $post_data['form_id'] );
-		$actual = ob_get_clean();
+		render_payment_method_info_before_options();
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
@@ -60,11 +56,8 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'payment info view' => [
-				'post_data'     => [
-					'form_id' => 26,
-				],
-				'expected_view' => <<<PAYMENT_INFO_VIEW
+			'payment info label'           => [
+				'expected_view' => <<<PAYMENT_INFO_LABEL
 <div class="donation-form-display-content-before-payment-options">
 	<p>Extend your donation, and reduce the cost to Cornerstone of processing your gift.  Payment options include:</p>
 	<ol>
@@ -75,7 +68,7 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	</ol>
 </div>
 
-PAYMENT_INFO_VIEW
+PAYMENT_INFO_LABEL
 				,
 			],
 		];
