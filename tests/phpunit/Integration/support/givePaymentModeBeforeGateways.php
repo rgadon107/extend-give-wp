@@ -12,7 +12,6 @@
 namespace spiralWebDb\ExtendGiveWP\Tests\Integration;
 
 use spiralWebDb\ExtendGiveWP\tests\phpunit\Integration\TestCase;
-use function spiralWebDb\ExtendGiveWP\get_give_donation_form_id;
 
 /**
  * Class Tests_RenderPaymentMethodInfoBeforeOptions
@@ -38,16 +37,13 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_recurring_donation_option_label( $expected ) {
-		$form_id = $this->factory()->post->create();
-		$form_id = get_give_donation_form_id( $form_id );
-		$args    = [];
+	public function test_should_render_recurring_donation_option_label( $expected_view ) {
 
 		ob_start();
-		do_action( 'give_payment_mode_before_gateways', $form_id, $args );
-		$actual = ob_get_clean();
+		do_action( 'give_payment_mode_before_gateways' );
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
@@ -55,7 +51,7 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'payment info view' => [
+			'payment info label is valid' => [
 				'expected_view' => <<<PAYMENT_INFO_VIEW
 <div class="donation-form-display-content-before-payment-options">
 	<p>Extend your donation, and reduce the cost to Cornerstone of processing your gift.  Payment options include:</p>
