@@ -49,7 +49,7 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 			->with( 'form_id' )
 			->andReturn( $form_id );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
-		
+
 		ob_start();
 		render_newsletter_signup_callout( $form_id );
 		$actual_view = ob_get_clean();
