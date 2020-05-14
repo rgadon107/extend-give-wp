@@ -49,10 +49,10 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		Functions\expect( 'get_option' )
 			->zeroOrMoreTimes()
 			->with( 'extend-give-wp', [] )
-			->andReturn( $options['featured-image-id'] );
+			->andReturn( $options );
 		Functions\expect( 'get_post_field' )
 			->zeroOrMoreTimes()
-			->with( 'post_excerpt', $options['featured-image-id'] )
+			->with( 'post_excerpt', 'attachment_id' )
 			->andReturn( $excerpt );
 		Functions\when( 'wp_get_attachment_image' )->justReturn();
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
@@ -61,7 +61,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		render_form_featured_image_and_caption( $form_id, 'large' );
 		$actual_view = ob_get_clean();
 
-		$this->assertSame( $expected_view, $actual_view );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
@@ -69,15 +69,15 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'post data is empty'       => [
+			'post data is empty'     => [
 				'form_id'       => '',
 				'options'       => [
-					'featured_image_id' => 0,
+					'featured_image_id' => '',
 				],
 				'post_excerpt'  => '',
 				'expected_view' => '',
 			],
-			'post data is non - empty' => [
+			'post data is not empty' => [
 				'form_id'       => 39,
 				'options'       => [
 					'featured_image_id' => 144,
