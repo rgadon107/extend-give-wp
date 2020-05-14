@@ -41,18 +41,18 @@ class Tests_CalloutRecurringDonationOption extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_recurring_donation_option_label( $post_data, $expected ) {
+	public function test_should_render_recurring_donation_option_label( $form_id, $expected_view ) {
 		Functions\expect( 'get_give_donation_form_id' )
 			->zeroOrMoreTimes()
 			->with( 'form_id' )
-			->andReturn( $post_data['form_id'] );
+			->andReturn( $form_id );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
 
 		ob_start();
-		callout_recurring_donation_option( $post_data['form_id'] );
-		$actual = ob_get_clean();
+		callout_recurring_donation_option( $form_id );
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
@@ -60,10 +60,12 @@ class Tests_CalloutRecurringDonationOption extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'donation levels label' => [
-				'post_data'     => [
-					'form_id' => 17,
-				],
+			'donation levels label is empty' => [
+				'form_id'       => 0,
+				'expected_view' => '',
+			],
+			'donation levels label is valid' => [
+				'form_id'       => 17,
 				'expected_view' => <<<CALLOUT_RECURRING_DONATION_VIEW
 <h3 class="recurring-donation-callout">Make This a Recurring Gift?</h3>
 
