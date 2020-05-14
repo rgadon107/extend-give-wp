@@ -33,6 +33,8 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 	public function setUp() {
 		parent::setUp();
 
+		$this->setup_common_wp_stubs();
+
 		require_once EXTEND_GIVE_WP_ROOT_DIR . '/src/support/load-assets.php';
 	}
 
@@ -47,8 +49,7 @@ class Test_RenderNewsletterSignupCallout extends TestCase {
 			->with( 'form_id' )
 			->andReturn( $form_id );
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
-		Functions\when( 'esc_attr' )->justReturn( $form_id );
-
+		
 		ob_start();
 		render_newsletter_signup_callout( $form_id );
 		$actual_view = ob_get_clean();
