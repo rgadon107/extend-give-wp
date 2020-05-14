@@ -56,7 +56,7 @@ class Tests_RenderPaymentMethodInfoBeforeOptions extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'payment info label'           => [
+			'payment info label' => [
 				'expected_view' => <<<PAYMENT_INFO_LABEL
 <div class="donation-form-display-content-before-payment-options">
 	<p>Extend your donation, and reduce the cost to Cornerstone of processing your gift.  Payment options include:</p>
