@@ -39,23 +39,29 @@ class Tests_RenderDonationLevelsLabel extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_donation_levels_label( $expected ) {
-		$form_id = $this->factory()->post->create();
+	public function test_should_render_donation_levels_label( $form_id, $expected_view ) {
 		$form_id = get_give_donation_form_id( $form_id );
 
 		ob_start();
 		render_donation_levels_label( $form_id );
-		$actual = ob_get_clean();
+		$actual_view = ob_get_clean();
 
-		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( $expected_view, $actual_view );
 	}
 
 	/**
 	 *  Data provider for unit test method.
 	 */
 	public function addTestData() {
+		$form_id = $this->factory()->post->create();
+
 		return [
-			'donation levels label' => [
+			'donation levels label is empty' => [
+				'form_id'       => 0,
+				'expected_view' => '',
+			],
+			'donation levels label is valid' => [
+				'form_id'       => $form_id,
 				'expected_view' => <<<DONATION_LEVELS_LABEL_VIEW
 <div class="donation-levels-label-wrap">
 	<h3 class="donation-levels-label">Donation Amount</h3>
