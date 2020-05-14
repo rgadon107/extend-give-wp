@@ -32,7 +32,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
-
+		$this->setup_common_wp_stubs();
 		require_once EXTEND_GIVE_WP_ROOT_DIR . '/src/support/load-assets.php';
 	}
 
@@ -41,7 +41,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 *
 	 * @dataProvider addTestData
 	 */
-	public function test_should_render_form_featured_image_and_caption( $form_id, $attachment_id, $excerpt, $expected_view ) {
+	public function test_should_render_form_featured_image_and_caption( $form_id, $options, $excerpt, $expected_view ) {
 		Functions\expect( 'get_give_donation_form_id' )
 			->zeroOrMoreTimes()
 			->with( 'form_id' )
@@ -49,21 +49,13 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		Functions\expect( 'get_option' )
 			->zeroOrMoreTimes()
 			->with( 'extend-give-wp', [] )
-			->andReturn( $attachment_id );
+			->andReturn( $options['featured-image-id'] );
 		Functions\expect( 'get_post_field' )
 			->zeroOrMoreTimes()
-			->with( 'post_excerpt', 'attachment_id' )
+			->with( 'post_excerpt', $options['featured-image-id'] )
 			->andReturn( $excerpt );
 		Functions\when( 'wp_get_attachment_image' )->justReturn();
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
-		Functions\expect( 'esc_attr' )
-			->zeroOrMoreTimes()
-			->with( 'attachment_id' )
-			->andReturn( $attachment_id )
-			->andAlsoExpectIt()
-			->zeroOrMoreTimes()
-			->with( 'post_excerpt' )
-			->andReturn( $excerpt );
 
 		ob_start();
 		render_form_featured_image_and_caption( $form_id, 'large' );
@@ -77,15 +69,19 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 	 */
 	public function addTestData() {
 		return [
-			'post data is empty'     => [
+			'post data is empty'       => [
 				'form_id'       => '',
-				'attachment_id' => 0,
+				'options'       => [
+					'featured_image_id' => 0,
+				],
 				'post_excerpt'  => '',
 				'expected_view' => '',
 			],
-			'post data is non-empty' => [
+			'post data is non - empty' => [
 				'form_id'       => 39,
-				'attachment_id' => 144,
+				'options'       => [
+					'featured_image_id' => 144,
+				],
 				'post_excerpt'  => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.',
 				'expected_view' => <<<FEATURED_IMAGE_VIEW
 <figure id="donation-form-featured-image" class="donate-page-featured-image attachment-144" aria-describedby="donation-form-featured-image">
