@@ -49,10 +49,10 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		Functions\expect( 'get_option' )
 			->zeroOrMoreTimes()
 			->with( 'extend-give-wp', [] )
-			->andReturn( $options['featured_image_id'] );
+			->andReturn( $options['featured-image-id'] );
 		Functions\expect( 'get_post_field' )
 			->zeroOrMoreTimes()
-			->with( 'post_excerpt', $options['featured_image_id'] )
+			->with( 'post_excerpt', $options['featured-image-id'] )
 			->andReturn( $excerpt );
 		Functions\when( 'wp_get_attachment_image' )->justReturn();
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
@@ -72,7 +72,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 			'post data is empty'     => [
 				'form_id'       => '',
 				'options'       => [
-					'featured_image_id' => '',
+					'featured-image-id' => '',
 				],
 				'post_excerpt'  => '',
 				'expected_view' => '',
@@ -80,7 +80,7 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 			'post data is not empty' => [
 				'form_id'       => 39,
 				'options'       => [
-					'featured_image_id' => 144,
+					'featured-image-id' => 144,
 				],
 				'post_excerpt'  => 'Members of the Cornerstone Chorale & Brass during their 2018 tour.',
 				'expected_view' => <<<FEATURED_IMAGE_VIEW
