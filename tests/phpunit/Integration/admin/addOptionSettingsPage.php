@@ -1,0 +1,59 @@
+<?php
+/**
+ *  Tests for add_option_settings_page()
+ *
+ * @since      1.0.0
+ * @author     Robert A. Gadon
+ * @package    spiralWebDb\ExtendGiveWP\Tests\Integration
+ * @link       http://spiralwebdb.com
+ * @license    GNU General Public License 2.0+
+ */
+
+namespace spiralWebDb\ExtendGiveWP\Tests\Integration;
+
+use spiralWebDb\ExtendGiveWP\tests\phpunit\Integration\TestCase;
+use function spiralWebDb\ExtendGiveWP\Admin\add_option_settings_page;
+
+/**
+ * Class Tests_AddOptionSettingsPage
+ *
+ * @covers ::\spiralWebDb\ExtendGiveWP\add_option_settings_page
+ *
+ * @group   extend-give-wp
+ * @group   admin
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamTag
+ */
+class Tests_AddOptionSettingsPage extends TestCase {
+
+	/**
+	 *  Test should check callback registered to action hook has expected priority.
+	 */
+	public function test_callback_registered_to_action_hook_has_expected_priority() {
+		$this->assertEquals( 10, has_action( 'admin_menu', 'spiralWebDb\ExtendGiveWP\Admin\add_option_settings_page' ) );
+	}
+
+	/**
+	 * Test add_option_settings_page() should add option settings page to admin.
+	 */
+	public function test_should_add_option_settings_page_and_return_hookname() {
+		$post = $this->factory->post->create_and_get();
+
+		add_submenu_page(
+			'options-general.php',
+			'Extend GiveWP -- Donation Form Option Settings',
+			'Extend GiveWP',
+			'manage_categories',
+			'extend-give-wp',
+			'spiralWebDb\ExtendGiveWP\Admin\render_option_page_template'
+		); // returns false.
+
+		$this->go_to( 'http://example.org/wp-admin/options-general.php?page=extend-give-wp' );
+
+//      function 'add_submenu_page' should return $hookname on success.
+//		$hookname = 'settings_page_extend-give-wp';
+
+//      Note: Either invoking do_action( 'admin_menu', '' ) or the function under test returns falsey (null or '' ).
+	}
+}
+
