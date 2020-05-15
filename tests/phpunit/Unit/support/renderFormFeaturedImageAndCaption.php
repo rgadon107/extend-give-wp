@@ -49,10 +49,10 @@ class Tests_RenderFormFeaturedImageAndCaption extends TestCase {
 		Functions\expect( 'get_option' )
 			->zeroOrMoreTimes()
 			->with( 'extend-give-wp', [] )
-			->andReturn( $options );
+			->andReturn( $options['featured_image_id'] );
 		Functions\expect( 'get_post_field' )
 			->zeroOrMoreTimes()
-			->with( 'post_excerpt', 'attachment_id' )
+			->with( 'post_excerpt', $options['featured_image_id'] )
 			->andReturn( $excerpt );
 		Functions\when( 'wp_get_attachment_image' )->justReturn();
 		Functions\expect( '_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
