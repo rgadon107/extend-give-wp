@@ -53,10 +53,6 @@ class Tests_AddOptionSettingsPage extends TestCase {
 		do_action( 'admin_menu', '' );
 
 		var_dump( add_option_settings_page() );
-//      function 'add_submenu_page' should return $hookname on success.
-//		$hookname = 'settings_page_extend-give-wp';
-
-//      Note: Either invoking do_action( 'admin_menu', '' ) or the function under test returns falsey (null or '' ).
 	}
 }
 
