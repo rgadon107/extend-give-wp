@@ -20,7 +20,7 @@ add_action( 'admin_menu', __NAMESPACE__ . '\add_option_settings_page' );
  * @since 1.0.0
  */
 function add_option_settings_page() {
-	add_submenu_page(
+	$hookname = add_submenu_page(
 		'options-general.php',  // parent slug.
 		'Extend GiveWP -- Donation Form Option Settings', // page title.
 		'Extend GiveWP', // menu title.
@@ -28,6 +28,8 @@ function add_option_settings_page() {
 		'extend-give-wp', // menu slug.
 		__NAMESPACE__ . '\render_option_page_template' // callback to output page content.
 	);
+
+	return $hookname;
 }
 
 /**
@@ -47,9 +49,9 @@ add_action( 'admin_init', __NAMESPACE__ . '\initialize_option_settings' );
 /**
  * Initialize settings on the option settings admin page.
  *
+ * @return void
  * @since 1.0.0
  *
- * @return void
  */
 function initialize_option_settings() {
 	register_setting( 'extend-give-wp', 'extend-give-wp' );
