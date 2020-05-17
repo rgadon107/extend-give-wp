@@ -37,7 +37,9 @@ class Tests_AddOptionSettingsPage extends TestCase {
 	 * Test add_option_settings_page() should add option settings page to admin.
 	 */
 	public function test_should_add_option_settings_page_and_return_hookname() {
-		$user = $this->factory()->user->create_and_get( [ 'role' => 'administrator' ] );
+		// Add user with admin capability to access submenu admin page.
+		$user = $this->factory()->user->create_and_get( [ 'role' => 'editor' ] );
+		$post = $this->factory()->post->create_and_get();
 
 		$hookname = add_submenu_page(
 			'options-general.php',
@@ -47,12 +49,12 @@ class Tests_AddOptionSettingsPage extends TestCase {
 			'extend-give-wp',
 			'spiralWebDb\ExtendGiveWP\Admin\render_option_page_template'
 		);
-		var_dump( $hookname );
+
 		$this->go_to( 'http://example.org/wp-admin/options-general.php?page=extend-give-wp' );
 
 		do_action( 'admin_menu', '' );
-
-		var_dump( add_option_settings_page() );
+		var_dump( $hookname ); // false
+		var_dump( add_option_settings_page() ); // false
 	}
 }
 
