@@ -40,10 +40,11 @@ class Tests_AddOptionSettingsPage extends TestCase {
 	 * Test add_option_settings_page() should add option settings page to admin.
 	 */
 	public function test_should_add_option_settings_page() {
+		// String returned by add_submenu_page() on success.
 		$hookname = 'settings_page_extend-give-wp';
 
 		Functions\expect( 'add_submenu_page' )
-			->zeroOrMoreTimes()
+			->once()
 			->with(
 				'options-general.php',
 				'Extend GiveWP -- Donation Form Option Settings',
@@ -52,9 +53,9 @@ class Tests_AddOptionSettingsPage extends TestCase {
 				'extend-give-wp',
 				'spiralWebDb\ExtendGiveWP\Admin\render_option_page_template'
 			)
-			->andReturn( 'settings_page_extend-give-wp' );
+			->andReturn( $hookname );
 
-		$this->assertNull( add_option_settings_page() );
+		$this->assertEquals( $hookname, add_option_settings_page() );
 	}
 }
 
