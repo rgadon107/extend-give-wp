@@ -17,7 +17,7 @@ use function spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings;
 /**
  * Class Test_InitializeOptionSettings
  *
- * @covers ::\spiralWebDb\ExtendGiveWP\initialize_option_settings
+ * @covers ::\spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings
  *
  * @group   extend-give-wp
  * @group   admin
@@ -26,4 +26,18 @@ use function spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings;
  */
 class Test_InitializeOptionSettings extends TestCase {
 
+	/*
+	 * Test initialize_option_settings() is registered to the 'admin_init' hook and returns the expected priority.
+	 */
+	public function test_callback_is_registered_to_action_event_and_returns_expected_priority() {
+		$this->assertEquals( 10, has_action( 'admin_init', 'spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings' ) );
+	}
+
+	/**
+	 * Test initialize_option_settings() initializes option settings.
+	 */
+	public function test_function_initializes_options_settings() {
+		$this->assertNull( initialize_option_settings() );
+	}
 }
+
