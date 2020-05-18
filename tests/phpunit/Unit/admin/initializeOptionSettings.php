@@ -18,7 +18,7 @@ use function spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings;
 /**
  * Class Test_RenderOptionPageTemplate
  *
- * @covers ::\spiralWebDb\ExtendGiveWP\initialize_option_settings
+ * @covers ::\spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings
  *
  * @group   extend-give-wp
  * @group   admin
@@ -35,4 +35,40 @@ class Test_RenderOptionPageTemplate extends TestCase {
 
 		require_once EXTEND_GIVE_WP_ROOT_DIR . '/src/admin/option-settings-admin.php';
 	}
+
+	/**
+	 * Test initialize_option_settings() initializes option settings.
+	 */
+	public function test_function_initializes_options_settings() {
+		Functions\expect( 'register_setting' )
+			->once()
+			->with( 'extend-give-wp', 'extend-give-wp' )
+			->andReturnNull();
+		Functions\expect( 'add_settings_section' )
+			->once()
+			->with(
+				'featured-image-section',
+				'Featured Image',
+				'spiralWebDb\ExtendGiveWP\Admin\render_featured_image_section_label',
+				'extend-give-wp'
+			)
+			->andReturnNull();
+		Functions\expect( 'add_settings_field' )
+			->once()
+			->with(
+				'featured-image-id',
+				'Featured Image ID',
+				'spiralWebDb\ExtendGiveWP\Admin\render_featured_image_id_field',
+				'extend-give-wp',
+				'featured-image-section',
+				[
+					'label_for' => 'featured-image-id',
+					'class'     => 'featured-image-id',
+				]
+			)
+			->andReturnNull();
+
+		$this->assertNull( initialize_option_settings() );
+	}
 }
+
