@@ -18,7 +18,7 @@ use function spiralWebDb\ExtendGiveWP\Admin\render_featured_image_section_label;
 /**
  * Class Test_RenderFeaturedImageSectionLabel
  *
- * @covers ::\spiralWebDb\ExtendGiveWP\render_featured_image_section_label
+ * @covers ::\spiralWebDb\ExtendGiveWP\Admin\render_featured_image_section_label
  *
  * @group   extend-give-wp
  * @group   admin
