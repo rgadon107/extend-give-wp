@@ -35,3 +35,19 @@ class Test_RenderFeaturedImageSectionLabel extends TestCase {
 
 		require_once EXTEND_GIVE_WP_ROOT_DIR . '/src/admin/option-settings-admin.php';
 	}
+
+	/*
+	 * Test render_featured_image_section_label() should render featured image section view file.
+	 */
+	public function test_should_render_featured_image_section_label() {
+		Functions\expect( 'spiralWebDb\ExtendGiveWP\_get_plugin_dir' )->andReturn( EXTEND_GIVE_WP_ROOT_DIR );
+		$expected_view = <<<FEATURED_IMAGE_SECTION_LABEL
+<p class="description">The featured image settings for the donation form.</p>
+
+FEATURED_IMAGE_SECTION_LABEL;
+
+		ob_start();
+		render_featured_image_section_label();
+		$this->assertEquals( $expected_view, ob_get_clean() );
+	}
+}
