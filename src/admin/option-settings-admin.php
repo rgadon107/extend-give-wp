@@ -51,7 +51,6 @@ add_action( 'admin_init', __NAMESPACE__ . '\initialize_option_settings' );
  *
  * @return void
  * @since 1.0.0
- *
  */
 function initialize_option_settings() {
 	register_setting( 'extend-give-wp', 'extend-give-wp' );
