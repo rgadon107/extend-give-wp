@@ -25,5 +25,45 @@ use function spiralWebDb\ExtendGiveWP\Admin\render_featured_image_id_field;
  * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamTag
  */
 class Test_RenderFeaturedImageIDField extends TestCase {
+	
+	/**
+	 * @dataProvider addTestData
+	 */
+	public function test_should_render_featured_image_id_field( $option, $expected_view ) {
+		$options       = get_option( 'extend-give-wp', $option );
+		$attachment_id = isset( $option['featured-image-id'] ) ? (int) $option['featured-image-id'] : 0;
 
+		ob_start();
+		render_featured_image_id_field();
+		$actual_view = ob_get_clean();
+
+		$this->assertEquals( $expected_view, $actual_view );
+	}
+
+	public function addTestData() {
+		return [
+			'empty data set'     => [
+				'option_data'   => [
+					'featured-image-id' => 0
+				],
+				'expected_view' => '',
+			],
+			'non-empty data set' => [
+				'option_data'   => [
+					'featured-image-id' => 144,
+				],
+				'expected_view' => <<<FEATURED_IMAGE_ID_FIELD
+<label>
+	<input id="featured-image-id" class="normal-text" name="extend-give-wp[featured-image-id]" type="number" min="1" aria-describedby="featured-image-attachment-id" value="144">
+	<p id="featured-image-input-label" class="description">Enter the image ID for the donation form featured image in the field above.</p>
+	<p id="featured-image-input-label" class="description">Get the ID by opening the Media Library, and select the featured image.</p>
+	<p id="featured-image-input-label" class="description">View the permalink on the ‘Attachment Details’ page. The ID is the value of the ‘?item=‘ parameter in the permalink.</p>
+</label>
+
+FEATURED_IMAGE_ID_FIELD
+				,
+			]
+		];
+	}
 }
+
