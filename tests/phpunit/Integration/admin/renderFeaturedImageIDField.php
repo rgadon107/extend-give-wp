@@ -25,8 +25,10 @@ use function spiralWebDb\ExtendGiveWP\Admin\render_featured_image_id_field;
  * phpcs:disable Squiz.Commenting.FunctionComment.MissingParamTag
  */
 class Test_RenderFeaturedImageIDField extends TestCase {
-	
+
 	/**
+	 * Test render_featured_image_id_field() should render featured image ID field.
+	 *
 	 * @dataProvider addTestData
 	 */
 	public function test_should_render_featured_image_id_field( $option, $expected_view ) {
@@ -40,11 +42,14 @@ class Test_RenderFeaturedImageIDField extends TestCase {
 		$this->assertEquals( $expected_view, $actual_view );
 	}
 
+	/**
+	 * Data provider for test method.
+	 */
 	public function addTestData() {
 		return [
 			'empty data set'     => [
 				'option_data'   => [
-					'featured-image-id' => 0
+					'featured-image-id' => 0,
 				],
 				'expected_view' => '',
 			],
@@ -62,7 +67,7 @@ class Test_RenderFeaturedImageIDField extends TestCase {
 
 FEATURED_IMAGE_ID_FIELD
 				,
-			]
+			],
 		];
 	}
 }
