@@ -26,7 +26,7 @@ use function spiralWebDb\ExtendGiveWP\Admin\initialize_option_settings;
  */
 class Test_InitializeOptionSettings extends TestCase {
 
-	/*
+	/**
 	 * Test initialize_option_settings() is registered to the 'admin_init' hook and returns the expected priority.
 	 */
 	public function test_callback_is_registered_to_action_event_and_returns_expected_priority() {
