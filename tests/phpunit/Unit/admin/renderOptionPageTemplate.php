@@ -86,7 +86,7 @@ class Test_RenderOptionPageTemplate extends TestCase {
 
 OPTION_PAGE_TEMPLATE
 				,
-			]
+			],
 		];
 	}
 }
