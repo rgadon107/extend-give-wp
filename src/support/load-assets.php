@@ -45,7 +45,7 @@ function render_form_featured_image_and_caption( $form_id, $size = 'large' ) {
 	// Get the featured-image ID to render the image and caption on the donation page.
 	$options       = get_option( 'extend-give-wp', [] );
 	$attachment_id = isset( $options['featured-image-id'] ) ? (int) $options['featured-image-id'] : 0;
-	$post          = get_post( $attachment_id );
+	$post_excerpt  = get_post_field( 'post_excerpt', $attachment_id );
 
 	require_once _get_plugin_dir() . '/src/views/donation-form/featured-image-view.php';
 }
