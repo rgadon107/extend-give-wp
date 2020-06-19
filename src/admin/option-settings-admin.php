@@ -93,11 +93,15 @@ function render_featured_image_section_label() {
 /**
  * Callback to render the settings field markup.
  *
- * @since 1.0.0
+ * @since 1.0.1
  */
 function render_featured_image_id_field() {
 	$options       = get_option( 'extend-give-wp', [] );
 	$attachment_id = isset( $options['featured-image-id'] ) ? (int) $options['featured-image-id'] : 0;
 
-	require_once _get_plugin_dir() . '/src/admin/views/featured-image-id-field.php';
+	if ( empty( $attachment_id ) ) {
+		return;
+	}
+
+	require _get_plugin_dir() . '/src/admin/views/featured-image-id-field.php';
 }
